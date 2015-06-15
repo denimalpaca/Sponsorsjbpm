@@ -1,0 +1,676 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<definitions id="Definition"
+             targetNamespace="http://www.jboss.org/drools"
+             typeLanguage="http://www.java.com/javaTypes"
+             expressionLanguage="http://www.mvel.org/2.0"
+             xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd"
+             xmlns:g="http://www.jboss.org/drools/flow/gpd"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+             xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+             xmlns:tns="http://www.jboss.org/drools">
+
+  <itemDefinition id="null" />
+
+  <process processType="Private" isExecutable="true" id="sponsorflow" name="sponsorflow" tns:packageName="Sponsors" tns:version="5.2" >
+
+    <extensionElements>
+     <tns:import name="Sponsors.MySQLAccess" />
+     <tns:import name="Sponsors.Main" />
+     <tns:import name="java.io.Console" />
+    </extensionElements>
+    <!-- process variables -->
+    <property id="interestReply" itemSubjectRef="null"/>
+    <property id="closed" itemSubjectRef="null"/>
+
+    <laneSet>
+      <lane name="Sponsor" >
+      </lane>
+      <lane name="Rep" >
+        <flowNodeRef>_jbpm-unique-0</flowNodeRef>
+        <flowNodeRef>_jbpm-unique-1</flowNodeRef>
+        <flowNodeRef>_jbpm-unique-2</flowNodeRef>
+        <flowNodeRef>_jbpm-unique-3</flowNodeRef>
+        <flowNodeRef>_jbpm-unique-4</flowNodeRef>
+        <flowNodeRef>_jbpm-unique-5</flowNodeRef>
+        <flowNodeRef>_jbpm-unique-6</flowNodeRef>
+        <flowNodeRef>_jbpm-unique-7</flowNodeRef>
+        <flowNodeRef>_jbpm-unique-8</flowNodeRef>
+      </lane>
+    </laneSet>
+    <!-- nodes -->
+    <startEvent id="_1" name="StartProcess"  isInterrupting="true"/>
+    <userTask id="_jbpm-unique-0" name="Open Cold Call List" >
+      <ioSpecification>
+        <dataInput id="_jbpm-unique-0_NodeNameInput" name="NodeName" />
+        <dataInput id="_jbpm-unique-0_TaskNameInput" name="TaskName" />
+        <dataInput id="_jbpm-unique-0_GroupIdInput" name="GroupId" />
+        <inputSet>
+          <dataInputRefs>_jbpm-unique-0_NodeNameInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-0_TaskNameInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-0_GroupIdInput</dataInputRefs>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-0_NodeNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Open Cold Call List</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-0_NodeNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-0_TaskNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Open Cold Call list</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-0_TaskNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-0_GroupIdInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">SB Hacks</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-0_GroupIdInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <potentialOwner>
+        <resourceAssignmentExpression>
+          <formalExpression>Rep</formalExpression>
+        </resourceAssignmentExpression>
+      </potentialOwner>
+    </userTask>
+    <userTask id="_jbpm-unique-1" name="Cold Call/Email" >
+      <ioSpecification>
+        <dataInput id="_jbpm-unique-1_NodeNameInput" name="NodeName" />
+        <dataInput id="_jbpm-unique-1_TaskNameInput" name="TaskName" />
+        <dataInput id="_jbpm-unique-1_GroupIdInput" name="GroupId" />
+        <inputSet>
+          <dataInputRefs>_jbpm-unique-1_NodeNameInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-1_TaskNameInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-1_GroupIdInput</dataInputRefs>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-1_NodeNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Cold Call/Email</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-1_NodeNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-1_TaskNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Cold Call/Email</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-1_TaskNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-1_GroupIdInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">SB Hacks</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-1_GroupIdInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <potentialOwner>
+        <resourceAssignmentExpression>
+          <formalExpression>Rep</formalExpression>
+        </resourceAssignmentExpression>
+      </potentialOwner>
+    </userTask>
+    <userTask id="_jbpm-unique-2" name="Send Invoice" >
+      <ioSpecification>
+        <dataInput id="_jbpm-unique-2_NodeNameInput" name="NodeName" />
+        <dataInput id="_jbpm-unique-2_TaskNameInput" name="TaskName" />
+        <dataInput id="_jbpm-unique-2_GroupIdInput" name="GroupId" />
+        <inputSet>
+          <dataInputRefs>_jbpm-unique-2_NodeNameInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-2_TaskNameInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-2_GroupIdInput</dataInputRefs>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-2_NodeNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Send Invoice</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-2_NodeNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-2_TaskNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Send Invoice</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-2_TaskNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-2_GroupIdInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">SB Hacks</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-2_GroupIdInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <potentialOwner>
+        <resourceAssignmentExpression>
+          <formalExpression>Rep</formalExpression>
+        </resourceAssignmentExpression>
+      </potentialOwner>
+    </userTask>
+    <userTask id="_jbpm-unique-3" name="Put on Round 2 List" >
+      <ioSpecification>
+        <dataInput id="_jbpm-unique-3_NodeNameInput" name="NodeName" />
+        <dataInput id="_jbpm-unique-3_TaskNameInput" name="TaskName" />
+        <dataInput id="_jbpm-unique-3_GroupIdInput" name="GroupId" />
+        <inputSet>
+          <dataInputRefs>_jbpm-unique-3_NodeNameInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-3_TaskNameInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-3_GroupIdInput</dataInputRefs>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-3_NodeNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Round 2 List</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-3_NodeNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-3_TaskNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Put on Round 2</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-3_TaskNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-3_GroupIdInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">SB Hacks</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-3_GroupIdInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <potentialOwner>
+        <resourceAssignmentExpression>
+          <formalExpression>Rep</formalExpression>
+        </resourceAssignmentExpression>
+      </potentialOwner>
+    </userTask>
+    <userTask id="_jbpm-unique-4" name="Receive Interest Reply" >
+      <ioSpecification>
+        <dataInput id="_jbpm-unique-4_NodeNameInput" name="NodeName" />
+        <dataInput id="_jbpm-unique-4_TaskNameInput" name="TaskName" />
+        <dataInput id="_jbpm-unique-4_GroupIdInput" name="GroupId" />
+        <inputSet>
+          <dataInputRefs>_jbpm-unique-4_NodeNameInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-4_TaskNameInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-4_GroupIdInput</dataInputRefs>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-4_NodeNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Receive Interest Reply</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-4_NodeNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-4_TaskNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Receive Reply</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-4_TaskNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-4_GroupIdInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">SB Hacks</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-4_GroupIdInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <potentialOwner>
+        <resourceAssignmentExpression>
+          <formalExpression>Rep</formalExpression>
+        </resourceAssignmentExpression>
+      </potentialOwner>
+    </userTask>
+    <userTask id="_jbpm-unique-5" name="Send to Closer" >
+      <ioSpecification>
+        <dataInput id="_jbpm-unique-5_NodeNameInput" name="NodeName" />
+        <dataInput id="_jbpm-unique-5_TaskNameInput" name="TaskName" />
+        <dataInput id="_jbpm-unique-5_SkippableInput" name="Skippable" />
+        <dataInput id="_jbpm-unique-5_GroupIdInput" name="GroupId" />
+        <inputSet>
+          <dataInputRefs>_jbpm-unique-5_NodeNameInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-5_TaskNameInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-5_SkippableInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-5_GroupIdInput</dataInputRefs>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-5_NodeNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Send to Closer</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-5_NodeNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-5_TaskNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Send to Closer</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-5_TaskNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-5_SkippableInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">true</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-5_SkippableInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-5_GroupIdInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">SB Hacks</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-5_GroupIdInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <potentialOwner>
+        <resourceAssignmentExpression>
+          <formalExpression>Rep</formalExpression>
+        </resourceAssignmentExpression>
+      </potentialOwner>
+    </userTask>
+    <userTask id="_jbpm-unique-6" name="Deposit Check" >
+      <ioSpecification>
+        <dataInput id="_jbpm-unique-6_NodeNameInput" name="NodeName" />
+        <dataInput id="_jbpm-unique-6_TaskNameInput" name="TaskName" />
+        <dataInput id="_jbpm-unique-6_GroupIdInput" name="GroupId" />
+        <inputSet>
+          <dataInputRefs>_jbpm-unique-6_NodeNameInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-6_TaskNameInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-6_GroupIdInput</dataInputRefs>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-6_NodeNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Deposit Check</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-6_NodeNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-6_TaskNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Deposit Check</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-6_TaskNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-6_GroupIdInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">SB Hacks</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-6_GroupIdInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <potentialOwner>
+        <resourceAssignmentExpression>
+          <formalExpression>Rep</formalExpression>
+        </resourceAssignmentExpression>
+      </potentialOwner>
+    </userTask>
+    <userTask id="_jbpm-unique-7" name="Receive Check" >
+      <ioSpecification>
+        <dataInput id="_jbpm-unique-7_NodeNameInput" name="NodeName" />
+        <dataInput id="_jbpm-unique-7_TaskNameInput" name="TaskName" />
+        <dataInput id="_jbpm-unique-7_GroupIdInput" name="GroupId" />
+        <inputSet>
+          <dataInputRefs>_jbpm-unique-7_NodeNameInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-7_TaskNameInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-7_GroupIdInput</dataInputRefs>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-7_NodeNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Receive Check</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-7_NodeNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-7_TaskNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Receive Check</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-7_TaskNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-7_GroupIdInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">SB Hacks</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-7_GroupIdInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <potentialOwner>
+        <resourceAssignmentExpression>
+          <formalExpression>Rep</formalExpression>
+        </resourceAssignmentExpression>
+      </potentialOwner>
+    </userTask>
+    <userTask id="_jbpm-unique-8" name="Update Event Details" >
+      <ioSpecification>
+        <dataInput id="_jbpm-unique-8_NodeNameInput" name="NodeName" />
+        <dataInput id="_jbpm-unique-8_TaskNameInput" name="TaskName" />
+        <dataInput id="_jbpm-unique-8_GroupIdInput" name="GroupId" />
+        <inputSet>
+          <dataInputRefs>_jbpm-unique-8_NodeNameInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-8_TaskNameInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-8_GroupIdInput</dataInputRefs>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-8_NodeNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Update Event Details</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-8_NodeNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-8_TaskNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Update Event Details</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-8_TaskNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-8_GroupIdInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">SB Hacks</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-8_GroupIdInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <potentialOwner>
+        <resourceAssignmentExpression>
+          <formalExpression>Rep</formalExpression>
+        </resourceAssignmentExpression>
+      </potentialOwner>
+    </userTask>
+    <exclusiveGateway id="_jbpm-unique-16" name="ConvergeToDB" gatewayDirection="Converging" />
+    <exclusiveGateway id="_jbpm-unique-18" name="ToSecondRound" gatewayDirection="Converging" />
+    <exclusiveGateway id="_jbpm-unique-19" name="Interest?" gatewayDirection="Diverging" />
+    <intermediateCatchEvent id="_jbpm-unique-20" name="Waiting on Sponsor" >
+      <timerEventDefinition>
+        <timeCycle xsi:type="tFormalExpression">0###50</timeCycle>
+      </timerEventDefinition>
+    </intermediateCatchEvent>
+    <exclusiveGateway id="_jbpm-unique-21" name="Closed?" gatewayDirection="Diverging" />
+    <intermediateCatchEvent id="_jbpm-unique-23" name="Wait for Invoice" >
+      <timerEventDefinition>
+        <timeCycle xsi:type="tFormalExpression">0###50</timeCycle>
+      </timerEventDefinition>
+    </intermediateCatchEvent>
+    <endEvent id="_jbpm-unique-40" name="End" >
+        <terminateEventDefinition />
+    </endEvent>
+    <userTask id="_jbpm-unique-2" name="Receive Email" >
+      <ioSpecification>
+        <inputSet>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+    </userTask>
+    <userTask id="_jbpm-unique-3" name="Send Interest Reply" >
+      <ioSpecification>
+        <inputSet>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+    </userTask>
+    <userTask id="_jbpm-unique-4" name="Decide on Tier" >
+      <ioSpecification>
+        <inputSet>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+    </userTask>
+    <userTask id="_jbpm-unique-5" name="Receive/Process Invoice" >
+      <ioSpecification>
+        <inputSet>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+    </userTask>
+    <userTask id="_jbpm-unique-6" name="Send Check" >
+      <ioSpecification>
+        <inputSet>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+    </userTask>
+    <endEvent id="_jbpm-unique-7" name="End" >
+        <terminateEventDefinition />
+    </endEvent>
+
+    <!-- connections -->
+    <sequenceFlow id="_jbpm-unique-16-_jbpm-unique-0" sourceRef="_jbpm-unique-16" targetRef="_jbpm-unique-0" />
+    <sequenceFlow id="_jbpm-unique-0-_jbpm-unique-1" sourceRef="_jbpm-unique-0" targetRef="_jbpm-unique-1" />
+    <sequenceFlow id="_jbpm-unique-21-_jbpm-unique-2" sourceRef="_jbpm-unique-21" targetRef="_jbpm-unique-2" name="sendInvoice" tns:priority="1" >
+      <conditionExpression xsi:type="tFormalExpression" language="http://www.java.com/java" >return closed == true;</conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="_jbpm-unique-18-_jbpm-unique-3" sourceRef="_jbpm-unique-18" targetRef="_jbpm-unique-3" />
+    <sequenceFlow id="_jbpm-unique-20-_jbpm-unique-4" sourceRef="_jbpm-unique-20" targetRef="_jbpm-unique-4" />
+    <sequenceFlow id="_jbpm-unique-19-_jbpm-unique-5" sourceRef="_jbpm-unique-19" targetRef="_jbpm-unique-5" name="sendToCloser" tns:priority="1" >
+      <conditionExpression xsi:type="tFormalExpression" language="http://www.java.com/java" >return interestReply == true;</conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="_jbpm-unique-7-_jbpm-unique-6" sourceRef="_jbpm-unique-7" targetRef="_jbpm-unique-6" />
+    <sequenceFlow id="_jbpm-unique-23-_jbpm-unique-7" sourceRef="_jbpm-unique-23" targetRef="_jbpm-unique-7" />
+    <sequenceFlow id="_jbpm-unique-6-_jbpm-unique-8" sourceRef="_jbpm-unique-6" targetRef="_jbpm-unique-8" />
+    <sequenceFlow id="_1-_jbpm-unique-16" sourceRef="_1" targetRef="_jbpm-unique-16" />
+    <sequenceFlow id="_jbpm-unique-3-_jbpm-unique-16" sourceRef="_jbpm-unique-3" targetRef="_jbpm-unique-16" />
+    <sequenceFlow id="_jbpm-unique-19-_jbpm-unique-18" sourceRef="_jbpm-unique-19" targetRef="_jbpm-unique-18" name="SecondRound" tns:priority="1" >
+      <conditionExpression xsi:type="tFormalExpression" language="http://www.java.com/java" >return interestReply == false;</conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="_jbpm-unique-21-_jbpm-unique-18" sourceRef="_jbpm-unique-21" targetRef="_jbpm-unique-18" name="toSecondRound" tns:priority="1" >
+      <conditionExpression xsi:type="tFormalExpression" language="http://www.java.com/java" >return closed == false;</conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="_jbpm-unique-4-_jbpm-unique-19" sourceRef="_jbpm-unique-4" targetRef="_jbpm-unique-19" />
+    <sequenceFlow id="_jbpm-unique-1-_jbpm-unique-20" sourceRef="_jbpm-unique-1" targetRef="_jbpm-unique-20" />
+    <sequenceFlow id="_jbpm-unique-5-_jbpm-unique-21" sourceRef="_jbpm-unique-5" targetRef="_jbpm-unique-21" />
+    <sequenceFlow id="_jbpm-unique-2-_jbpm-unique-23" sourceRef="_jbpm-unique-2" targetRef="_jbpm-unique-23" />
+    <sequenceFlow id="_jbpm-unique-8-_jbpm-unique-40" sourceRef="_jbpm-unique-8" targetRef="_jbpm-unique-40" />
+    <sequenceFlow id="_jbpm-unique-2-_jbpm-unique-3" sourceRef="_jbpm-unique-2" targetRef="_jbpm-unique-3" />
+    <sequenceFlow id="_jbpm-unique-3-_jbpm-unique-4" sourceRef="_jbpm-unique-3" targetRef="_jbpm-unique-4" />
+    <sequenceFlow id="_jbpm-unique-4-_jbpm-unique-5" sourceRef="_jbpm-unique-4" targetRef="_jbpm-unique-5" />
+    <sequenceFlow id="_jbpm-unique-5-_jbpm-unique-6" sourceRef="_jbpm-unique-5" targetRef="_jbpm-unique-6" />
+    <sequenceFlow id="_jbpm-unique-6-_jbpm-unique-7" sourceRef="_jbpm-unique-6" targetRef="_jbpm-unique-7" />
+
+  </process>
+
+  <bpmndi:BPMNDiagram>
+    <bpmndi:BPMNPlane bpmnElement="sponsorflow" >
+      <bpmndi:BPMNShape bpmnElement="_1" >
+        <dc:Bounds x="6" y="131" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-0" >
+        <dc:Bounds x="239" y="131" width="164" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-1" >
+        <dc:Bounds x="465" y="131" width="172" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-2" >
+        <dc:Bounds x="1376" y="131" width="156" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-3" >
+        <dc:Bounds x="93" y="37" width="162" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-4" >
+        <dc:Bounds x="737" y="131" width="188" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-5" >
+        <dc:Bounds x="1071" y="131" width="152" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-6" >
+        <dc:Bounds x="1836" y="131" width="164" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-7" >
+        <dc:Bounds x="1630" y="131" width="136" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-8" >
+        <dc:Bounds x="2083" y="131" width="160" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-16" >
+        <dc:Bounds x="149" y="131" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-18" >
+        <dc:Bounds x="1125" y="37" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-19" >
+        <dc:Bounds x="961" y="131" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-20" >
+        <dc:Bounds x="659" y="132" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-21" >
+        <dc:Bounds x="1279" y="128" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-23" >
+        <dc:Bounds x="1555" y="131" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-40" >
+        <dc:Bounds x="2318" y="131" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-2" >
+        <dc:Bounds x="496" y="452" width="142" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-3" >
+        <dc:Bounds x="775" y="452" width="170" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-4" >
+        <dc:Bounds x="1086" y="452" width="194" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-5" >
+        <dc:Bounds x="1356" y="452" width="198" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-6" >
+        <dc:Bounds x="1626" y="452" width="170" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-7" >
+        <dc:Bounds x="2318" y="452" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-16-_jbpm-unique-0" >
+        <di:waypoint x="173" y="155" />
+        <di:waypoint x="321" y="155" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-0-_jbpm-unique-1" >
+        <di:waypoint x="321" y="155" />
+        <di:waypoint x="551" y="155" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-21-_jbpm-unique-2" >
+        <di:waypoint x="1303" y="152" />
+        <di:waypoint x="1454" y="155" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-18-_jbpm-unique-3" >
+        <di:waypoint x="1149" y="61" />
+        <di:waypoint x="174" y="61" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-20-_jbpm-unique-4" >
+        <di:waypoint x="683" y="156" />
+        <di:waypoint x="831" y="155" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-19-_jbpm-unique-5" >
+        <di:waypoint x="985" y="155" />
+        <di:waypoint x="1147" y="155" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-7-_jbpm-unique-6" >
+        <di:waypoint x="1698" y="155" />
+        <di:waypoint x="1918" y="155" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-23-_jbpm-unique-7" >
+        <di:waypoint x="1579" y="155" />
+        <di:waypoint x="1698" y="155" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-6-_jbpm-unique-8" >
+        <di:waypoint x="1918" y="155" />
+        <di:waypoint x="2163" y="155" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_1-_jbpm-unique-16" >
+        <di:waypoint x="30" y="155" />
+        <di:waypoint x="173" y="155" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-3-_jbpm-unique-16" >
+        <di:waypoint x="174" y="61" />
+        <di:waypoint x="173" y="155" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-19-_jbpm-unique-18" >
+        <di:waypoint x="985" y="155" />
+        <di:waypoint x="1149" y="61" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-21-_jbpm-unique-18" >
+        <di:waypoint x="1303" y="152" />
+        <di:waypoint x="1149" y="61" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-4-_jbpm-unique-19" >
+        <di:waypoint x="831" y="155" />
+        <di:waypoint x="985" y="155" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-1-_jbpm-unique-20" >
+        <di:waypoint x="551" y="155" />
+        <di:waypoint x="683" y="156" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-5-_jbpm-unique-21" >
+        <di:waypoint x="1147" y="155" />
+        <di:waypoint x="1303" y="152" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-2-_jbpm-unique-23" >
+        <di:waypoint x="1454" y="155" />
+        <di:waypoint x="1579" y="155" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-8-_jbpm-unique-40" >
+        <di:waypoint x="2163" y="155" />
+        <di:waypoint x="2342" y="155" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-2-_jbpm-unique-3" >
+        <di:waypoint x="567" y="476" />
+        <di:waypoint x="860" y="476" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-3-_jbpm-unique-4" >
+        <di:waypoint x="860" y="476" />
+        <di:waypoint x="1183" y="476" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-4-_jbpm-unique-5" >
+        <di:waypoint x="1183" y="476" />
+        <di:waypoint x="1455" y="476" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-5-_jbpm-unique-6" >
+        <di:waypoint x="1455" y="476" />
+        <di:waypoint x="1711" y="476" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-6-_jbpm-unique-7" >
+        <di:waypoint x="1711" y="476" />
+        <di:waypoint x="2342" y="476" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+
+</definitions>
